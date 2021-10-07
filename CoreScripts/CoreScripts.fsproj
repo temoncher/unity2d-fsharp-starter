@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <WarnOn>3390;$(WarnOn)</WarnOn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Driver.fs" />
+    <Compile Include="TriggerLogger.fs" />
+    <Compile Include="CollisionLogger.fs" />
+    <Compile Include="MessageLogger.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\Library\ScriptAssemblies\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.24f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.24f1\Editor\Data\Managed\UnityEngine\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.24f1\Editor\Data\Managed\UnityEngine\UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.24f1\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.24f1\Editor\Data\Managed\UnityEngine\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.24f1\Editor\Data\Managed\UnityEngine\UnityEngine.InputModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy /y &quot;$(TargetPath)&quot; &quot;$(ProjectDir)\..\Assets\&quot;" />
+    <Exec Command="copy /y &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;$(ProjectDir)\..\Assets\&quot;" />
+  </Target>
+</Project>

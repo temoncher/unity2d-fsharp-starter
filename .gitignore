@@ -1,0 +1,44 @@
+# OS
+Thumbs.db
+.DS_Store
+
+# IDEs
+obj
+**/bin/Debug
+**/bin/Release
+**/packages
+*.userprefs
+*.user
+test-results
+.vs
+.vscode
+.idea
+**/Assets/Plugins/Editor/JetBrains
+**/Assets/Plugins/Editor/JetBrains.meta
+DerivedData
+xcuserdata
+build
+
+# Unity
+Library
+Temp
+*.unitypackage
+Assembly-CSharp*.csproj
+*.sln
+.gradle
+Logs
+
+# Jenny
+Jenny.zip
+Jenny.zip.meta
+*.userproperties
+
+# fastlane
+fastlane/README.md
+fastlane/report.xml
+
+# Project
+Build
+
+# FSharp stuff
+**/Assets/CoreScripts.*
