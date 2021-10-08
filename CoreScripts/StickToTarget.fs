@@ -6,7 +6,7 @@ type StickToTarget() =
     inherit MonoBehaviour()
 
     [<SerializeField>]
-    let _offset: float32 = 10f
+    let _offset = 10f
 
     [<DefaultValue>]
     [<SerializeField>]

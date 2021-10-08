@@ -7,4 +7,4 @@ type Package() =
 
     [<DefaultValue>]
     [<SerializeField>]
-    val mutable packageName: string
+    val mutable contents: string

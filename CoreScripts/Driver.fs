@@ -16,10 +16,15 @@ type Driver() =
 
     member private this._applyMovement() =
         let moveAmount =
-            Input.GetAxis("Vertical") * Time.fixedDeltaTime * _moveSpeed
+            Input.GetAxis("Vertical")
+            * Time.fixedDeltaTime
+            * _moveSpeed
 
         let steerAmount =
-            Input.GetAxis("Horizontal") * Time.fixedDeltaTime * _steerSpeed * -1f
+            Input.GetAxis("Horizontal")
+            * Time.fixedDeltaTime
+            * _steerSpeed
+            * -1f
 
         Vector3(0f, moveAmount, 0f)
         |> this.transform.Translate
