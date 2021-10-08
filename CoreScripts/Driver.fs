@@ -10,22 +10,16 @@ type Driver() =
     let _steerSpeed = 350f
 
     [<SerializeField>]
-    let _moveSpeed = 10f
-
-    let getMoveAmount = (*) _moveSpeed
-
-    let getSteerAmount = (*) (_steerSpeed * -1f)
+    let _moveSpeed = 30f
 
     member private this.FixedUpdate() = this._applyMovement ()
 
     member private this._applyMovement() =
         let moveAmount =
-            Input.GetAxis("Vertical") * Time.fixedDeltaTime
-            |> getMoveAmount
+            Input.GetAxis("Vertical") * Time.fixedDeltaTime * _moveSpeed
 
         let steerAmount =
-            Input.GetAxis("Horizontal") * Time.fixedDeltaTime
-            |> getSteerAmount
+            Input.GetAxis("Horizontal") * Time.fixedDeltaTime * _steerSpeed * -1f
 
         Vector3(0f, moveAmount, 0f)
         |> this.transform.Translate
