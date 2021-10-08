@@ -1,6 +1,7 @@
 namespace CoreScripts
 
 open UnityEngine
+open System
 
 type Driver() =
     inherit MonoBehaviour()
@@ -11,20 +12,23 @@ type Driver() =
     [<SerializeField>]
     let _moveSpeed = 10f
 
+    let getMoveAmount = (*) _moveSpeed
 
-    member private this.Update() =
-        this._applyMovement ()
-        this._applySteering ()
+    let getSteerAmount = (*) (_steerSpeed * -1f)
+
+    member private this.FixedUpdate() = this._applyMovement ()
 
     member private this._applyMovement() =
-        let moveAmount = Input.GetAxis("Vertical") * _moveSpeed * Time.deltaTime
+        let moveAmount =
+            Input.GetAxis("Vertical") * Time.fixedDeltaTime
+            |> getMoveAmount
+
+        let steerAmount =
+            Input.GetAxis("Horizontal") * Time.fixedDeltaTime
+            |> getSteerAmount
 
         Vector3(0f, moveAmount, 0f)
         |> this.transform.Translate
-
-    member private this._applySteering() =
-        let steerAmount =
-            Input.GetAxis("Horizontal") * -1f * _steerSpeed * Time.deltaTime
 
         Vector3(0f, 0f, steerAmount)
         |> this.transform.Rotate
