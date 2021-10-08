@@ -10,9 +10,6 @@
     <Compile Include="Package.fs" />
     <Compile Include="PackageDeliverer.fs" />
     <Compile Include="StickToTarget.fs" />
-    <Compile Include="TriggerLogger.fs" />
-    <Compile Include="CollisionLogger.fs" />
-    <Compile Include="MessageLogger.fs" />
   </ItemGroup>
 
   <ItemGroup>
